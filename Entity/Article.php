@@ -8,6 +8,7 @@ class Article
     protected $id;
     protected $title;
     protected $content;
+    protected $category;
     protected $createdAt;
     protected $updatedAt;
 
@@ -39,6 +40,16 @@ class Article
     public function setContent(?string $content)
     {
         $this->content = $content;
+    }
+
+    public function getCategory(): ?int
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?int $category)
+    {
+        $this->category = $category;
     }
 
     public function getCreatedAt(): ?DateTime
