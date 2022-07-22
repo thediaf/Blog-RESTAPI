@@ -1,8 +1,9 @@
 <?php
 namespace App\Model;
 
-use App\Model\Manager;
+require_once('Model/Manager.php');
 
+use App\Model\Manager;
 
 class ArticleModel extends Manager
 {
@@ -11,6 +12,16 @@ class ArticleModel extends Manager
     public function __construct()
     {
         $this->connexion  = $this->dbConnect();
+    }
+
+    public function getArticles()
+    {
+
+        $sql = 'SELECT * FROM article ORDER BY id DESC';
+        $query =  $this->connexion->query($sql);
+
+        return $query->fetchAll();
+
     }
 
 }
