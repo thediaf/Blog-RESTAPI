@@ -34,4 +34,15 @@ class ArticleModel extends Manager
 
     }
 
+    public function getArticlesByCategory($id)
+    {
+
+        $sql = 'SELECT id, titre, contenu, dateCreation FROM article WHERE categorie = ? ORDER BY id DESC';
+        $query =  $this->connexion->prepare($sql);
+        $query->execute(array($id));
+
+        return $query->fetchAll();
+
+    }
+
 }

@@ -46,4 +46,18 @@ class ArticleController
 		header('Content-Type: application/json');
 		echo json_encode($response, JSON_PRETTY_PRINT);
     }
+
+    public function categoryArticles($id)
+    {
+        $articles = $this->model->getArticlesByCategory($id);
+        $categories = $this->categoryModel->getCategories();
+       
+        $response = new stdClass();
+        $response->articles = $articles;
+        $response->categories = $categories;
+        // var_dump($articles);
+
+		header('Content-Type: application/json');
+		echo json_encode($response, JSON_PRETTY_PRINT);
+    }
 }

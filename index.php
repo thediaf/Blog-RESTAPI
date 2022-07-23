@@ -8,9 +8,18 @@ if(isset($_SERVER["REQUEST_METHOD"]))
 {   
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
-        
-        $run->show($_GET['id']);
+        if(isset($_GET['action']))
+        {
+            if ($_GET['action'] == "show")
+            {
+                $run->show($_GET['id']);
+            }
+            elseif ($_GET['action'] == "category")
+            {   
+                $run->categoryArticles($_GET['id']);
+            }
+        }
+        else
+            $run->home();   
     }
 }
-else
-    $run->home();   
