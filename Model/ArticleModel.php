@@ -24,4 +24,14 @@ class ArticleModel extends Manager
 
     }
 
+    public function getArticle($id)
+    {
+        $sql = 'SELECT id, titre, contenu, dateCreation FROM article WHERE id = ? ORDER BY id DESC';
+        $query =  $this->connexion->prepare($sql);
+        $query->execute(array($id));
+
+        return $query->fetch();
+
+    }
+
 }
