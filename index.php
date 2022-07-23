@@ -22,4 +22,7 @@ if(isset($_SERVER["REQUEST_METHOD"]))
         else
             $run->home();   
     }
+    elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $run->add();
+    }
 }
