@@ -25,11 +25,19 @@ if(isset($_SERVER["REQUEST_METHOD"]))
                 
                 $userController->signin();
             }
+            elseif ($_GET['action'] == "signup")
+            {
+                
+                $userController->signup();
+            }
         }
         else
             $run->home();   
     }
     elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $userController->signin();
+        if (isset($_POST['firstname'])) {
+            $userController->signup();
+        }
+        $userController->signup();
     }
 }

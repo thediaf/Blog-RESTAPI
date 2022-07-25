@@ -2,6 +2,8 @@
 namespace App\Model;
 
 require_once('Model/Manager.php');
+require_once('Entity/User.php');
+
 
 use App\Model\Manager;
 
@@ -23,6 +25,18 @@ class UserModel extends Manager
 
         return $query->fetch();
 
+    }
+
+    public function new($user)
+    {
+        $request = $this->connexion->prepare('INSERT INTO user(lastname, firstname, login, password) VALUES(:lastname, :firstname, :login, :password)');
+        
+        return $request->execute(array(
+                    'lastname' => $user->getLastname,
+                    'firstname' => $user->getFirstname,
+                    'login' => $user->getLogin,
+                    'password' => $user->getPassword
+                ));
     }
 
 }
