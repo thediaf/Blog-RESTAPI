@@ -1,7 +1,9 @@
 <?php
 require_once('Controller/ArticleController.php');
+require_once('Controller/UserController.php');
 
 $run = new \App\Controller\ArticleController();
+$userController = new \App\Controller\UserController();
 
 
 if(isset($_SERVER["REQUEST_METHOD"]))
@@ -18,11 +20,16 @@ if(isset($_SERVER["REQUEST_METHOD"]))
             {   
                 $run->categoryArticles($_GET['id']);
             }
+            elseif ($_GET['action'] == "signin")
+            {
+                
+                $userController->signin();
+            }
         }
         else
             $run->home();   
     }
     elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $run->add();
+        $userController->signin();
     }
 }
