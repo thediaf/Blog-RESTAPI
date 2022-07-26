@@ -41,6 +41,7 @@ class ArticleController
         $article = new Article();
         $article->setTitle($_POST['title']);
         $article->setContent($_POST['content']);
+        $article->setCategory($_POST['category']);
         $article->setCreatedAt(date('Y-m-d H:i:s'));
 
         if (isset($_POST['title'])) {

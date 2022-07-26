@@ -38,6 +38,11 @@ if(isset($_SERVER["REQUEST_METHOD"]))
         if (isset($_POST['firstname'])) {
             $userController->signup();
         }
-        $userController->signup();
+        elseif (isset($_POST['content'])) {
+            $run->add();
+        }
+        elseif (isset($_POST['login'])) {
+            $userController->signin();
+        }
     }
 }
