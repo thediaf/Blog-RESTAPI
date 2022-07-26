@@ -27,6 +27,20 @@ class UserController
         $this->categoryModel    =   new CategoryModel();
     }
 
+    public function users()
+    {
+        $users   =   $this->model->getUsers();
+        $categories =   $this->categoryModel->getCategories();
+
+        $response = new stdClass();
+        $response->users = $users;
+        $response->categories = $categories;
+
+		header('Content-Type: application/json');
+		echo json_encode($response, JSON_PRETTY_PRINT);
+    
+    }
+
     public function signin()
     {
         if(!empty($_POST['login']) && !empty($_POST['password']))

@@ -20,6 +20,11 @@ if(isset($_SERVER["REQUEST_METHOD"]))
             {   
                 $run->categoryArticles($_GET['id']);
             }
+            elseif ($_GET['action'] == "users")
+            {
+                
+                $userController->users();
+            }
             elseif ($_GET['action'] == "signin")
             {
                 

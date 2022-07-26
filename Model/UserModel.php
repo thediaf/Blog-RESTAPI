@@ -16,6 +16,16 @@ class UserModel extends Manager
         $this->connexion  = $this->dbConnect();
     }
 
+    public function getUsers()
+    {
+
+        $sql = 'SELECT * FROM user ORDER BY id DESC';
+        $query =  $this->connexion->query($sql);
+
+        return $query->fetchAll();
+
+    }
+
     public function getUser($login)
     {
 
